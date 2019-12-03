@@ -1,0 +1,20 @@
+name: CI
+
+on: 
+  push:
+    branches: 
+      - cypress
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Dependencies
+      run: yarn install
+    - name: Run server
+      run: yarn serve
+    - name: Cypress.io
+      uses: cypress-io/github-action@v1.16.1
